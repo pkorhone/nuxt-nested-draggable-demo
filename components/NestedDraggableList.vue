@@ -1,8 +1,9 @@
 <template>
   <draggable
-    :animation="200"
     class="draggable-class"
     tag="ul"
+    :animation="200"
+    :group="{ name: 'g1' }"
     :list="items"
     @end="onEnd($event, $event.item._underlying_vm_.id)"
   >
@@ -22,10 +23,6 @@ import draggable from 'vuedraggable';
 })
 export default class NestedDraggableList extends Vue {
   @Prop() items
-
-  mounted() {
-    console.log('hi')
-  }
 
   @Emit('reorder')
   onEnd(event, eventId) {
